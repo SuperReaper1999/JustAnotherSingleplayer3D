@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class MenuButtons : MonoBehaviour {
 
@@ -10,6 +10,8 @@ public class MenuButtons : MonoBehaviour {
 
         GameObject pauseMenu = GameObject.Find("PauseMenu");
         pauseMenu.GetComponent<Canvas>().enabled = false;
+
+        Time.timeScale = 1;
     }
 
     // Closes the game.
@@ -22,9 +24,9 @@ public class MenuButtons : MonoBehaviour {
         GameObject settingsMenu = GameObject.Find("SettingsMenu");
         settingsMenu.GetComponent<Canvas>().enabled = true;
     }
+
     // Starts the game.
     public void StartButton () {
-        NetworkManager.singleton.StartClient();
-        NetworkManager.singleton.StartHost();
+        SceneManager.LoadScene(1);
     }
 }

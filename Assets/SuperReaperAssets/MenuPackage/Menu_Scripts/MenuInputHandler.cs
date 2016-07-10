@@ -17,6 +17,19 @@ public class MenuInputHandler : MonoBehaviour {
 
 	// Update is called once per frame.
 	void Update () {
+        Debug.Log(Cursor.lockState + "" + Time.timeScale);
+
+        if (Time.timeScale == 1 && SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         if (Input.GetButtonUp("Pause"))
         {
             PauseHandler();
@@ -30,6 +43,7 @@ public class MenuInputHandler : MonoBehaviour {
         {
             pauseMenu.enabled = true;
             Debug.Log("PauseMenu enabled");
+            Time.timeScale = 0;
         }
         else if (settingsMenu.enabled)
         {
@@ -40,6 +54,7 @@ public class MenuInputHandler : MonoBehaviour {
         {
             pauseMenu.enabled = false;
             Debug.Log("PauseMenu disabled");
+            Time.timeScale = 1;
         }
     }
 }
