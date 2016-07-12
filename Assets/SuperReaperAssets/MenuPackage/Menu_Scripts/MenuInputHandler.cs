@@ -17,7 +17,6 @@ public class MenuInputHandler : MonoBehaviour {
 
 	// Update is called once per frame.
 	void Update () {
-        Debug.Log(Cursor.lockState + "" + Time.timeScale);
 
         if (Time.timeScale == 1 && SceneManager.GetActiveScene().name != "MainMenu")
         {

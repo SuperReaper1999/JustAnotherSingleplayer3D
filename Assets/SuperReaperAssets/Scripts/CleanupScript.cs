@@ -8,7 +8,13 @@ public class CleanupScript : MonoBehaviour {
     [SerializeField, Tooltip("the lowest allowed framerate before running cleanup automatically.")]
     private int minimumFramerate;
 
-    // TODO : Fix this script running if v-sync is enabled and the refresh rate of the screen is lower than the minimum framerate Likely way to fix it will be to set minimum framerate to refreshrate of the monitor if v-sync is enabled.
+    void FixedUpdate () {
+        if (QualitySettings.vSyncCount == 1)
+        {
+            minimumFramerate = Screen.currentResolution.refreshRate - 5;
+        }
+        else { minimumFramerate = 144; }
+    }
 
     // Update is called once per frame
     void Update () {
