@@ -6,8 +6,6 @@ using UnityEngine;
 namespace UnityStandardAssets.Effects
 {
 
-    // TODO : modify this so that does damage to any damageable objects within the explosion radius based on distance from the centre.
-
     public class ExplosionPhysicsForce : MonoBehaviour
     {
         public float explosionForce = 4;
