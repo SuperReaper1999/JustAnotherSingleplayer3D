@@ -5,33 +5,33 @@ public class Health : MonoBehaviour {
 
     public bool isPlayer = false;
     public bool isDamageable = true;
-    public bool hasArmor = false;
+    public bool hasArmour = false;
     [SerializeField]
     private int healthValue = 100;
     [SerializeField]
-    private int armorValue = 0;
+    private int armourValue = 0;
 
     public GameObject destructionEffectPrefab;
 
     // Use this for initialization.
     void Start()
     {
-        if (hasArmor)
+        if (hasArmour)
         {
-            armorValue = 70;
+            armourValue = 70;
         }
         else {
-            armorValue = 0;
+            armourValue = 0;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (armorValue >= 1) {
-            hasArmor = true;
+        if (armourValue >= 1) {
+            hasArmour = true;
         } else {
-            hasArmor = false;
+            hasArmour = false;
         }
 
         if (!isPlayer && healthValue <= 0)
@@ -41,7 +41,22 @@ public class Health : MonoBehaviour {
         }
     }
 
-    // Getter for health value.
+    // Allows adding for Armour.
+    public void AddArmour(int a) {
+        armourValue += a;
+    }
+
+    // Allows adding for Health.
+    public void AddHealth(int h) {
+        healthValue += h;
+    }
+
+    // Getter for Armour value.
+    public int GetArmour() {
+        return armourValue;
+    }
+
+    // Getter for Health value.
     public int GetHealth() {
         return healthValue;
     }
@@ -50,25 +65,25 @@ public class Health : MonoBehaviour {
     public void DoDamage(float damageToDo) {
         if (isDamageable)
         {
-            if (hasArmor)
+            if (hasArmour)
             {
                 float damage = damageToDo;
-                if (armorValue >= 70)
+                if (armourValue >= 70)
                 {
                     damage = damageToDo / 3.5f;
                     Debug.Log("armorValue >= 70");
                 }
-                else if (armorValue >= 50)
+                else if (armourValue >= 50)
                 {
                     damage = damageToDo / 3f;
                     Debug.Log("armorValue >= 50");
                 }
-                else if (armorValue >= 30)
+                else if (armourValue >= 30)
                 {
                     damage = damageToDo / 2f;
                     Debug.Log("armorValue >= 30");
                 }
-                else if (armorValue >= 5)
+                else if (armourValue >= 5)
                 {
                     damage = damageToDo / 1.5f;
                     Debug.Log("armorValue >= 5");
@@ -78,7 +93,7 @@ public class Health : MonoBehaviour {
                     damage = damageToDo / 1.25f;
                     Debug.Log("armorValue < 5");
                 }
-                armorValue -= (int)damageToDo / 2;
+                armourValue -= (int)damageToDo / 2;
                 healthValue -= (int)damage;
             }
             else

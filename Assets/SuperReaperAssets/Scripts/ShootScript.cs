@@ -28,7 +28,7 @@ public class ShootScript : MonoBehaviour {
 	void Update () {
         cooldownTimer -= Time.deltaTime;
         // Instantiates a bullets while the shoot button is held.
-        if (Input.GetButton("Fire1") && cooldownTimer <= 0 && isFullAuto && Time.timeScale == 1)
+        if (Input.GetButton("Fire1") && cooldownTimer <= 0 && isFullAuto && Time.timeScale != 0)
         {
             GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(transform.forward));
             bullet.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * bulletSpeed;
@@ -36,7 +36,7 @@ public class ShootScript : MonoBehaviour {
         }
 
         // Instantiates a bullet when the shoot button is pressed.
-        if (Input.GetButtonDown("Fire1") && !isFullAuto && cooldownTimer <= 0 && Time.timeScale == 1)
+        if (Input.GetButtonDown("Fire1") && !isFullAuto && cooldownTimer <= 0 && Time.timeScale != 0)
         {
             GameObject bullet = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.LookRotation(transform.forward));
             bullet.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * bulletSpeed;

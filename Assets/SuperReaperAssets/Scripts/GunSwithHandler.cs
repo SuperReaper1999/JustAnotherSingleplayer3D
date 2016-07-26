@@ -23,6 +23,7 @@ public class GunSwithHandler : MonoBehaviour {
             guns[0].SetActive(true);
             guns[1].SetActive(false);
             guns[2].SetActive(false);
+            guns[3].SetActive(false);
         }
         else if(Input.GetKeyUp("2"))
         {
@@ -30,6 +31,7 @@ public class GunSwithHandler : MonoBehaviour {
             guns[0].SetActive(false);
             guns[1].SetActive(true);
             guns[2].SetActive(false);
+            guns[3].SetActive(false);
         }
         else if (Input.GetKeyUp("3"))
         {
@@ -37,6 +39,15 @@ public class GunSwithHandler : MonoBehaviour {
             guns[0].SetActive(false);
             guns[1].SetActive(false);
             guns[2].SetActive(true);
+            guns[3].SetActive(false);
+        }
+        else if (Input.GetKeyUp("4"))
+        {
+            Debug.Log("BatmanGun equipped");
+            guns[0].SetActive(false);
+            guns[1].SetActive(false);
+            guns[2].SetActive(false);
+            guns[3].SetActive(true);
         }
     }
 }
