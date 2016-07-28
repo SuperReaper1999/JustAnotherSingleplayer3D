@@ -18,7 +18,7 @@ public class StatusIndicatorController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        healthText.text = playerHealth.GetHealth().ToString();
-        armourText.text = playerHealth.GetArmour().ToString();
+        healthText.text = playerHealth.GetCurrentHealth().ToString();
+        armourText.text = playerHealth.GetCurrentArmour().ToString();
     }
 }

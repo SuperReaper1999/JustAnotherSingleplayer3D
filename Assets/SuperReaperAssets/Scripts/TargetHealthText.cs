@@ -5,7 +5,7 @@ public class TargetHealthText : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        GetComponent<TextMesh>().text = transform.root.GetComponent<Health>().GetHealth().ToString();
+        GetComponent<TextMesh>().text = transform.root.GetComponent<Health>().GetCurrentHealth().ToString();
         transform.parent.LookAt(Camera.main.transform);
     }
 }
