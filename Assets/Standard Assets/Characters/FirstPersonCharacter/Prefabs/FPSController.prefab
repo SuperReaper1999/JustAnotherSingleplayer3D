@@ -13,6 +13,7 @@ GameObject:
   - 54: {fileID: 5400000}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11401610}
+  - 114: {fileID: 11484668}
   m_Layer: 0
   m_Name: FPSController
   m_TagString: Player
@@ -70,19 +71,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &117592
+--- !u!1 &117056
 GameObject:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 465182}
-  - 33: {fileID: 3384500}
-  - 23: {fileID: 2362550}
-  - 114: {fileID: 11429118}
+  - 4: {fileID: 484046}
+  - 33: {fileID: 3320440}
+  - 23: {fileID: 2341496}
   m_Layer: 0
-  m_Name: SecondaryGun
+  m_Name: default
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &122922
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411494}
+  - 114: {fileID: 11405760}
+  m_Layer: 0
+  m_Name: Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,6 +131,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 472086}
   - 95: {fileID: 9513038}
+  - 114: {fileID: 11498654}
   m_Layer: 0
   m_Name: BatmanGun
   m_TagString: Untagged
@@ -219,6 +236,20 @@ Transform:
   - {fileID: 419472}
   m_Father: {fileID: 400000}
   m_RootOrder: 0
+--- !u!4 &411494
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122922}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
+  m_LocalPosition: {x: -0.07, y: 0.064, z: 0.047}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_Children:
+  - {fileID: 484046}
+  m_Father: {fileID: 419472}
+  m_RootOrder: 1
 --- !u!4 &419472
 Transform:
   m_ObjectHideFlags: 1
@@ -231,7 +262,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 494686}
-  - {fileID: 465182}
+  - {fileID: 411494}
   - {fileID: 482658}
   - {fileID: 472086}
   m_Father: {fileID: 400002}
@@ -275,19 +306,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 472086}
   m_RootOrder: 2
---- !u!4 &465182
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117592}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.75}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 419472}
-  m_RootOrder: 1
 --- !u!4 &472086
 Transform:
   m_ObjectHideFlags: 1
@@ -331,6 +349,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 419472}
   m_RootOrder: 2
+--- !u!4 &484046
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117056}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 411494}
+  m_RootOrder: 0
 --- !u!4 &494686
 Transform:
   m_ObjectHideFlags: 1
@@ -456,6 +487,32 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &2341496
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117056}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_Materials:
+  - {fileID: 2100000, guid: f645c0dbd2902d949a185b191c070ab7, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 1
+  m_ReflectionProbeUsage: 1
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!23 &2357206
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -474,32 +531,6 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!23 &2362550
-MeshRenderer:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117592}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 1f875ae4f01de1244862471efc256c1a, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_ReflectionProbeUsage: 1
-  m_ProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_MinimumChartSize: 4
@@ -574,6 +605,13 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 170438}
   m_Mesh: {fileID: 4300006, guid: e60a10fcb19efcb48b761e264d3d9b27, type: 3}
+--- !u!33 &3320440
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117056}
+  m_Mesh: {fileID: 4300000, guid: 3616422586463f8459f18a49d38f3240, type: 3}
 --- !u!33 &3343036
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -594,13 +632,6 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151408}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &3384500
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117592}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &3393596
 MeshFilter:
@@ -849,6 +880,8 @@ MonoBehaviour:
   hasArmour: 0
   healthValue: 100
   armourValue: 0
+  maxHealthValue: 100
+  maxArmourValue: 100
   destructionEffectPrefab: {fileID: 0}
 --- !u!114 &11403330
 MonoBehaviour:
@@ -863,9 +896,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guns:
   - {fileID: 133692}
-  - {fileID: 117592}
+  - {fileID: 122922}
   - {fileID: 151408}
   - {fileID: 144358}
+--- !u!114 &11405760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 122922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb54d7641acc1a43acebe0564dd60dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gunName: Pistol
+  bulletPrefab: {fileID: 167354, guid: 4fd3c93e7597d904eb7aafd3979dd395, type: 2}
+  isFullAuto: 0
+  cooldownTime: 0
+  bulletSpeed: 370
 --- !u!114 &11419092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -882,22 +931,30 @@ MonoBehaviour:
   isFullAuto: 0
   cooldownTime: 1
   bulletSpeed: 115
---- !u!114 &11429118
+--- !u!114 &11484668
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117592}
+  m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcb54d7641acc1a43acebe0564dd60dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 887a884894e803b439e94590f5599228, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunName: Pistol
-  bulletPrefab: {fileID: 167354, guid: 4fd3c93e7597d904eb7aafd3979dd395, type: 2}
-  isFullAuto: 0
-  cooldownTime: 0
-  bulletSpeed: 370
+--- !u!114 &11498654
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47a953070d911f4c899171bc70c9a23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstObject: {fileID: 0}
+  secondObject: {fileID: 0}
 --- !u!143 &14300000
 CharacterController:
   m_ObjectHideFlags: 1

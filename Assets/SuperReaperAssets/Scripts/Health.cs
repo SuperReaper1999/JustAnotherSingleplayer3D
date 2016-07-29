@@ -41,7 +41,7 @@ public class Health : MonoBehaviour {
         {
             armourValue += a;
         }
-        else if (healthValue + a <= maxArmourValue)
+        else if (armourValue + a <= maxArmourValue)
         {
             armourValue += a;
         }

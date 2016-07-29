@@ -44,5 +44,5 @@ public class ShootScript : MonoBehaviour {
             bullet.GetComponent<Rigidbody>().velocity = Camera.main.transform.forward * bulletSpeed;
             cooldownTimer = cooldownTime;
         }
-	}
+    }
 }
