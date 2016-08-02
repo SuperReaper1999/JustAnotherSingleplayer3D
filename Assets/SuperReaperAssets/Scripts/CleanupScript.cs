@@ -20,7 +20,6 @@ public class CleanupScript : MonoBehaviour {
     void Update () {
         if (2 / Time.deltaTime <= minimumFramerate && Time.timeScale == 1)
         {
-            Debug.Log("framerate is below " + minimumFramerate + " running cleanup." + "framerate was " + 2/Time.deltaTime + " when this was ran");
             DestroyObjects();
         }
 

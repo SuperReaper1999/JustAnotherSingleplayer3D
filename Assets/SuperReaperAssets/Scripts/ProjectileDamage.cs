@@ -20,7 +20,7 @@ public class ProjectileDamage : MonoBehaviour {
         {
             float damageToDo = projectilesDamage - lifeTime * 4;
             Debug.Log(damageToDo);
-            collision.collider.GetComponent<Health>().DoDamage(projectilesDamage - lifeTime*4);
+            collision.collider.GetComponent<Health>().DoDamage(projectilesDamage - lifeTime*4, 20);
         }
         Destroy(this);
     }

@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e2c2c25f4155847a01a3bc3288a54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHealthOrArmour: 1
+  pickupType: 1
   isOverload: 0
-  pickupValue: 10
+  pickupAmount: 10
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

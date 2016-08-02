@@ -19,8 +19,6 @@ public class ShootScript : MonoBehaviour {
 
     private float cooldownTimer;
 
-    // TODO : make bullets shoot from the camera instead of from the actual gun without colliding with the player.
-
     // Use this for initialization
     void Start () {
         // gunSwitchHand = transform.parent.GetComponent<GunSwithHandler>();

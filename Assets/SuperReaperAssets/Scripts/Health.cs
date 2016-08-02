@@ -18,7 +18,7 @@ public class Health : MonoBehaviour {
 
     public GameObject destructionEffectPrefab;
 
-    // TODO : do something when the players health falls below 1.
+    // TODO : Implement respawning for players.
 
     // Update is called once per frame
     void Update() {
@@ -30,7 +30,11 @@ public class Health : MonoBehaviour {
 
         if (!isPlayer && healthValue <= 0)
         {
-            Instantiate(destructionEffectPrefab, transform.position + new Vector3(0,1,0), Quaternion.AngleAxis(90, Vector3.left));
+            Instantiate(destructionEffectPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.AngleAxis(90, Vector3.left));
+            Destroy(this.gameObject);
+        }
+        else if (isPlayer && healthValue <= 0)
+        {
             Destroy(this.gameObject);
         }
     }
@@ -90,43 +94,17 @@ public class Health : MonoBehaviour {
     }
 
     // Handles doing damage.
-    public void DoDamage(float damageToDo) {
+    public void DoDamage(float heathDamage, int armourDamage) {
         if (isDamageable)
         {
             if (hasArmour)
             {
-                float damage = damageToDo;
-                if (armourValue >= 70)
-                {
-                    damage = damageToDo / 3.5f;
-                    Debug.Log("armorValue >= 70");
-                }
-                else if (armourValue >= 50)
-                {
-                    damage = damageToDo / 3f;
-                    Debug.Log("armorValue >= 50");
-                }
-                else if (armourValue >= 30)
-                {
-                    damage = damageToDo / 2f;
-                    Debug.Log("armorValue >= 30");
-                }
-                else if (armourValue >= 5)
-                {
-                    damage = damageToDo / 1.5f;
-                    Debug.Log("armorValue >= 5");
-                }
-                else
-                {
-                    damage = damageToDo / 1.25f;
-                    Debug.Log("armorValue < 5");
-                }
-                armourValue -= (int)damageToDo / 2;
-                healthValue -= (int)damage;
+                armourValue -= armourDamage;
+                healthValue -= (int)heathDamage;
             }
             else
             {
-                healthValue -= (int)damageToDo;
+                healthValue -= ((int)heathDamage + armourDamage);
             }
         }       
     }

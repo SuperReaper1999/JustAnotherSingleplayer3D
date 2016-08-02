@@ -3,6 +3,8 @@ using System.Collections;
 
 public class ExplosionDamage : MonoBehaviour {
 
+    // TODO : fix this so that it does damage better.
+
     // When this script is instantiated applies force to objects and creates explosion effects.
     private IEnumerator Start()
     {
@@ -18,7 +20,7 @@ public class ExplosionDamage : MonoBehaviour {
         {
             if (col.GetComponent<Health>())
             {
-                col.GetComponent<Health>().DoDamage(200 / (Vector3.Distance(transform.position, col.transform.position) / 2 ));
+                col.GetComponent<Health>().DoDamage(100 / (Vector3.Distance(transform.position, col.transform.position)), 50);
                 Debug.Log(200 / (Vector3.Distance(transform.position, col.transform.position)));
             }
         }

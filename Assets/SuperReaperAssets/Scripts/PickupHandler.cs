@@ -3,63 +3,122 @@ using System.Collections;
 
 public class PickupHandler : MonoBehaviour {
 
-    // TODO : add sound effects for pickups.
+    // TODO : Add sound effects for pickups.
 
-    [SerializeField, Tooltip("what type of pickup is this? true = Health, false = Armour")]
-    private bool isHealthOrArmour = true;
+    private enum PickupType {Armour, Health, Ammo};
+    private enum AmmoPickupType { Rifle, Pistol, Launcher };
+
+    [SerializeField, Tooltip("What type of pickup is this?")]
+    private PickupType pickupType;
+
+    [SerializeField, Tooltip("If this is ammo what type of ammo is it?")]
+    private AmmoPickupType ammoPickupType;
+
     [SerializeField, Tooltip("Is this pickup allowed to overload its max value?")]
     private bool isOverload = false;
 
-    [SerializeField, Tooltip("How much armour/health should this give?")]
-    private int pickupValue = 0;
+    [SerializeField, Tooltip("How much of the selected pickup type should this give?")]
+    private int pickupAmount = 0;
 
-    // Update is called once per frame
-    void Update() {
+    // Start is called on initialization.
+    void Start() {
         if (isOverload)
         {
             GetComponent<Renderer>().material.color = new Color32(255, 0, 0, 255);
         }
-        else if (!isOverload && isHealthOrArmour)
+        else
         {
-            GetComponent<Renderer>().material.color = new Color32(0, 255, 0, 255);
+            switch (pickupType)
+            {
+                case PickupType.Health:
+                    GetComponent<Renderer>().material.color = new Color32(0, 255, 0, 255);
+                    break;
+
+                case PickupType.Armour:
+                    GetComponent<Renderer>().material.color = new Color32(0, 0, 255, 255);
+                    break;
+
+                default:
+                    Debug.Log("unhandled case " + pickupType);
+                    break;
+            }
         }
-        else if (!isOverload && !isHealthOrArmour)
+    }
+
+    private void HandlePickupHealth(Collider col) {
+        Health playerHealth = col.gameObject.GetComponent<Health>();
+        if (isOverload == false && playerHealth.GetCurrentHealth() >= playerHealth.GetMaxHealth())
         {
-            GetComponent<Renderer>().material.color = new Color32(0, 0, 255, 255);
+            // Play sound effect and display Health full message here.
         }
+        else
+        {
+            playerHealth.AddHealth(pickupAmount, isOverload);
+            Destroy(transform.parent.gameObject);
+        }
+    }
+
+    private void HandlePickupArmour(Collider col) {
+        Health playerHealth = col.gameObject.GetComponent<Health>();
+        if (isOverload == false && playerHealth.GetCurrentArmour() >= playerHealth.GetMaxArmour())
+        {
+            // Play sound effect and display Armour full message here.
+        }
+        else
+        {
+            playerHealth.AddArmour(pickupAmount, isOverload);
+            Destroy(transform.parent.gameObject);
+        }
+    }
+
+    private void HandlePickupAmmo(Collider col) {
+
+        GunAmmoHandler ammoHandler = col.GetComponentInChildren<GunAmmoHandler>();
+        switch (ammoPickupType)
+        {
+            case AmmoPickupType.Rifle:
+                ammoHandler.SetRifleAmmo(pickupAmount);
+                break;
+
+            case AmmoPickupType.Pistol:
+                ammoHandler.SetPistolAmmo(pickupAmount);
+                break;
+
+            case AmmoPickupType.Launcher:
+                ammoHandler.SetLauncherAmmo(pickupAmount);
+                break;
+            default:
+                Debug.Log("unhandled case " + ammoPickupType);
+                break;
+        }
+        Destroy(transform.parent.gameObject);
     }
 
     // Called when an object enters this objects trigger.
     public void OnTriggerEnter(Collider col) {
-        Debug.Log(col.gameObject);
-        if (col.tag == "Player")
+
+        if (col.tag != "Player")
         {
-            Health playerHealth = col.gameObject.GetComponent<Health>();
-            if (isHealthOrArmour)
-            {
-                if (isOverload == false && playerHealth.GetCurrentHealth() >= playerHealth.GetMaxHealth())
-                {
-                    // Play sound effect and display Health full message here.
-                }
-                else
-                {
-                    playerHealth.AddHealth(pickupValue, isOverload);
-                    Destroy(transform.parent.gameObject);
-                }
-                
-            }
-            else
-            {
-                if (isOverload == false && playerHealth.GetCurrentArmour() >= playerHealth.GetMaxArmour())
-                {
-                    // Play sound effect and display Armour full message here.
-                }
-                else
-                {
-                    playerHealth.AddArmour(pickupValue, isOverload);
-                    Destroy(transform.parent.gameObject);
-                }
-            }
+            return;
+        }
+
+        switch(pickupType)
+        {
+            case PickupType.Health:
+                HandlePickupHealth(col);
+                break;
+
+            case PickupType.Armour:
+                HandlePickupArmour(col);
+                break;
+
+            case PickupType.Ammo:
+                HandlePickupAmmo(col);
+                break;
+
+            default:
+                Debug.Log("unhandled case " + pickupType);
+                break;
         }
     }
 }
