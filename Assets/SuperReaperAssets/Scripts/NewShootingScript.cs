@@ -73,7 +73,7 @@ public class NewShootingScript : MonoBehaviour {
         // Performs a RayCast while the shoot button is held.
         if (Input.GetButton("Fire1") && cooldownTimer <= 0 && isFullAuto && Time.timeScale != 0)
         {
-            if (CheckAmmo() == 0) { return; /* TODO : Play sound effect of empty ammo here */ }
+            if (CheckAmmo() == 0) { if (!transform.parent.GetComponent<AudioSource>().isPlaying) { transform.parent.GetComponent<AudioSource>().Play(); } return; }
             RemoveAmmo(1);
             RaycastHit rayHit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, maxRange, layersToHit))
@@ -89,7 +89,7 @@ public class NewShootingScript : MonoBehaviour {
         // Performs a RayCast when the shoot button is pressed.
         if (Input.GetButtonDown("Fire1") && !isFullAuto && cooldownTimer <= 0 && Time.timeScale != 0)
         {
-            if (CheckAmmo() == 0) { return; /* TODO : Play sound effect of empty ammo here */ }
+            if (CheckAmmo() == 0) { transform.parent.GetComponent<AudioSource>().Play(); return; }
             RemoveAmmo(1);
             RaycastHit rayHit;
             if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out rayHit, maxRange, layersToHit))
